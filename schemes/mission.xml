@@ -22,6 +22,8 @@
     <synchornizedWith>
       <gameLogic name="equipMarket" />
       <gameLogic name="carMarket" />
+      <gameLogic name="hospital" />
+      <gameLogic name="servicePoint" />
     </synchornizedWith>
   </gameLogic>
   
