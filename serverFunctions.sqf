@@ -12,7 +12,7 @@ fnc_s_initializeAOIs = {
 			
 			_triggers = synchronizedObjects _aoi;
 			{
-				_loc = [_x, true] call dzn_fnc_convertTriggerToLocation;
+				_loc = [_x, false] call dzn_fnc_convertTriggerToLocation;
 				_area pushBack _loc;
 			} forEach _triggers;
 			
