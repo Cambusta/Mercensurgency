@@ -6,6 +6,7 @@
       <trigger name="" />
       <trigger name="" />
     </synchronizedWith>
+    <variable name="area" value="[location0, location1]" />
   </gameLogic>
   ...
   <gameLogic type="Location" class="any">
@@ -14,6 +15,7 @@
       <trigger name="" />
       <trigger name="" />
     </synchronizedWith>
+    <variable name="area" value="[location0, location1]" />
   </gameLogic>
   
   <!-- Main Player's Base -->
