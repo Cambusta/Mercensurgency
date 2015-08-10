@@ -1,7 +1,18 @@
+class Header {
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 20;
+};
+
+onLoadName 			= "Mercenary COIN";
+author 				  = "10Cambusta";
+
+enableDebugConsole = 2;
 
 
-
+// ==============
 // Respawn - Base
+// ==============
 respawn = 3;
 respawnDelay = 10;    // Should be specified after mission init with setPlayerRespawnTime (local)
 respawnOnStart = -1;  //Dont respawn on start. Don't run respawn script on start.
@@ -11,5 +22,23 @@ reviveDelay = 6;
 reviveForceRespawnDelay = 120;
 reviveBleedOutDelay = 1200;
 
-
-//Mission Parameters
+// ==============
+// Mission Parameters
+// ==============
+class Params
+{
+	// Mission Condition
+	class paramEmptyDelimiter0 
+	{
+		title = "$STR_delimi_misCond";
+		values[] = {""};
+		default = "";
+	};
+	
+	class par_endTime
+	{
+		title = "$STR_par_endTime";
+		values[] = {15,30,45,60,75,90,105,120};
+		default = 30;
+	};
+};
