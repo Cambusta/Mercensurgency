@@ -1,3 +1,5 @@
+#include "serverFunctions.sqf"
+
 // Get mission parameters
 call dzn_fnc_getMissionParametes;
 
