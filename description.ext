@@ -27,10 +27,44 @@ reviveBleedOutDelay = 1200;
 // ==============
 class Params
 {
-	// Mission Condition
+	// Start cash Settings
 	class paramEmptyDelimiter0 
 	{
-		title = "--- Enviroment ----------";
+		title = "--- Cash";
+		values[] = {""};
+		default = "";
+	}
+	class par_startCash	
+	{
+		title = "  Start cash per player";
+		values[] = {2500,5000,7500,10000,12500,30000};
+		default = 5000;		
+	};
+	
+	// Respawn Settings
+	class paramEmptyDelimiter1 
+	{
+		title = "--- Respawn Setting";
+		values[] = {""};
+		default = "";
+	}
+	class par_respawnCost	
+	{
+		title = "  Respawn time";
+		values[] = {15,30,60,120,240,360};
+		default = 15;		
+	};
+	class par_respawnCost	
+	{
+		title = "  Respawn price";
+		values[] = {0,500,1000,2000,5000,10000};
+		default = 1000;		
+	};
+	
+	// Enviroment Condition
+	class paramEmptyDelimiter2 
+	{
+		title = "--- Enviroment";
 		values[] = {""};
 		default = "";
 	};
@@ -100,6 +134,95 @@ class Params
 		default = 2015;
 	};
 	
+	// Hostile forces Conditions
+	class paramEmptyDelimiter3 
+	{
+		title = "--- Hostile forces";
+		values[] = {""};
+		default = "";
+	};
+	class par_hostileForces_skill
+	{
+		title = "  Hostile forces - Skill";
+		values[] = {0,1,2};
+		texts[] = {
+			"Newbie",
+			"Experienced",
+			"Skilled"
+		};
+		default = 0; 		
+	};
+	class par_hostileForces_amount
+	{
+		title = "  Hostile forces - Amount";
+		values[] = {0,1,2,3,4};
+		texts[] = {
+			"Few",
+			"Small",
+			"Normal",
+			"Many",
+			"Large"
+		};
+		default = 2; 		
+	};
+	class par_hostileForces_vehicles
+	{
+		title = "  Hostile forces - Vehicles";
+		values[] = {0,1,2,3,4};
+		texts[] = {
+			"No",
+			"Technicans",
+			"Light Armor (previous and armored cars, APC)",
+			"Medium Armor (previous and IFV)",
+			"Heavy Armor (previous and MBT)"
+		};
+		default = 2; 		
+	};
 	
-	
+	// Allied forces Conditions
+	class paramEmptyDelimiter4 
+	{
+		title = "--- Allied forces";
+		values[] = {""};
+		default = "";
+	};
+	class par_alliedForces_skill
+	{
+		title = "  Allied forces - Skill";
+		values[] = {0,1,2};
+		texts[] = {
+			"Newbie",
+			"Experienced",
+			"Skilled"
+		};
+		default = 0; 		
+	};
+	class par_alliedForces_amount
+	{
+		title = "  Allied forces - Amount";
+		values[] = {0,1,2,3,4};
+		texts[] = {
+			"Few",
+			"Small",
+			"Normal",
+			"Many",
+			"Large"
+		};
+		default = 2; 		
+	};
+	class par_alliedForces_vehicles
+	{
+		title = "  Allied forces - Vehicles";
+		values[] = {0,1,2,3,4};
+		texts[] = {
+			"No",
+			"Technicans",
+			"Light Armor (previous and armored cars, APC)",
+			"Medium Armor (previous and IFV)",
+			"Heavy Armor (previous and MBT)"
+		};
+		default = 2; 		
+	};
 };
+
+// ======== END OF MISSION PARAMETERS =============
