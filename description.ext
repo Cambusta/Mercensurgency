@@ -7,6 +7,9 @@ respawnDelay = 10;
 respawnOnStart = -1;  //Dont respawn on start. Don't run respawn script on start.
 respawnTemplates[] = {"Counter","Revive","Wave"};
 
+reviveDelay = 6;
+reviveForceRespawnDelay = 120;
+reviveBleedOutDelay = 1200;
 
 
 //Mission Parameters
