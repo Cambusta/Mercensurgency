@@ -1,5 +1,6 @@
 fnc_s_initializeAOIs = {
 	// call fnc_initializeAOIs
+	private ["_aoi", "_displayName", "_owner", "_area", "_triggers"];
 	
 	{
 		// _x = [aoi_0, ["Stratis Air Base", resistance]]
