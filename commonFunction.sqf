@@ -1,4 +1,4 @@
-// Convert mission parameters classes to variables with the same name - e.g. @class par_alliedForces_amount to @par_alliedForces_amount
+// Convert mission parameters classes to variables with the smae name - e.g. @class par_alliedForces_amount to @par_alliedForces_amount
 dzn_fnc_getMissionParametes = {
 	//Params
 	if (isNil "paramsArray") then {
@@ -73,20 +73,20 @@ dzn_fnc_setValueByKey = {
 };
 
 dzn_fnc_setWeather = {
-	// this call dzn_fnc_setWeather
+	// [@MisPar, @Mapping] call dzn_fnc_setWeather
 	if !(isServer || isDedicated) exitWith {};
 	
-	if (_this > 0) then {
+	if (_this select 0 > 0) then {
 		{
-			if (_this == _x select 0) exitWith {
+			if (_this select 0 == _x select 0) exitWith {
 				0 setOvercast (_x select 1);
 			};
-		} forEach dzn_weatherSettingsMapping;
+		} forEach (_this select 1);
 	} else {
-		0 setOvercast ( (dzn_weatherSettingsMapping call BIS_fnc_selectRandom) select 1 );
+		0 setOvercast ( ((_this select 1) call BIS_fnc_selectRandom) select 1 );
 	};
 	
-	switch (_this) do {
+	switch (_this select 0) do {
 		case 4: { 0 setRain 0.5; };
 		case 5: { 0 setRain 1; };
 	};
@@ -95,13 +95,13 @@ dzn_fnc_setWeather = {
 };
 
 dzn_fnc_setFog = {
-	// _this call dzn_fnc_setFog
+	// [@MisPar, @Mapping] call dzn_fnc_setFog
 	if !(isServer || isDedicated) exitWith {};
 	
-	if (_this > 0) then {
-		0 setFog ([dzn_fogSettingsMapping, _this] call dzn_fnc_getValueByKey);
+	if (_this select 0 > 0) then {
+		0 setFog ([_this select 1, _this select 0] call dzn_fnc_getValueByKey);
 	} else {
-		0 setFog ((dzn_fogSettingsMapping call BIS_fnc_selectRandom) select 1);
+		0 setFog ((_this select 1 call BIS_fnc_selectRandom) select 1);
 	};
 };
 
