@@ -1,4 +1,4 @@
-// Convert mission parameters classes to variables with the smae name - e.g. @class par_alliedForces_amount to @par_alliedForces_amount
+// Convert mission parameters classes to variables with the same name - e.g. @class par_alliedForces_amount to @par_alliedForces_amount
 dzn_fnc_getMissionParametes = {
 	//Params
 	if (isNil "paramsArray") then {
