@@ -13,3 +13,20 @@ aoiToPropertiesMapping = [
 	,[aoi_7,	["Camp Maxwell",	"hostiles"]]
 	,[aoi_8,	["Air Station Mike-25",	"hostiles"]]
 ];
+
+
+
+// Enviroment Setting mapping
+weatherSettingsMapping = [
+	[1, 0],
+	[2, 0.25],
+	[3, 0.5],
+	[4, 0.75],
+	[5, 1]
+];
+
+fogSettingsMapping = [
+	[1, [0, 0.01, 0]],
+	[2, [0.5, 0.02, 0]],
+	[3, [1, 0.01, 0]]
+];
