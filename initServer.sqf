@@ -1,6 +1,7 @@
 #include "serverFunctions.sqf";
 
 // Get mission parameters
+missionParametersSet = true;
 call dzn_fnc_getMissionParametes;
 
 // Set Date, Daytime and Weather
