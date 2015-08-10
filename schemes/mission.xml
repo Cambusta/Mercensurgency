@@ -1,0 +1,36 @@
+<objects>
+  <!-- Areas of interest -->
+  <gameLogic type="Location" class="Town">
+    <name>aoi_0</name>
+    <synchronizedWith>
+      <trigger name="" />
+      <trigger name="" />
+    </synchronizedWith>
+  </gameLogic>
+  ...
+  <gameLogic type="Location" class="any">
+    <name>aoi_N</name>
+     <synchronizedWith>
+      <trigger name="" />
+      <trigger name="" />
+    </synchronizedWith>
+  </gameLogic>
+  
+  <!-- Main Player's Base -->
+  <gameLogic type="GameLogic">
+    <name>merc_mainBase</name>
+    <synchornizedWith>
+      <gameLogic name="equipMarket" />
+      <gameLogic name="carMarket" />
+    </synchornizedWith>
+  </gameLogic>
+  
+</objects>
+
+<triggers>
+  
+</triggers>
+
+<markers>
+  <repawn_west />
+</markers>
