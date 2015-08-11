@@ -17,9 +17,9 @@ aoiToPropertiesMapping = [
 // AOI's Garrisons
 // [ @GarrisonType,	@MarkerType,	@DYNAI_STUFF]
 aoiGarrisonsTypes = [
-	[ "Squad",	"group1",	[]]
-	,["Platoon",	"group3",	[]]
-	,["Squad_Veh",	"o_motor_inf",	[]]
+	[ "Squad",	["group1",	[]]]
+	,["Platoon",	["group3",	[]]]
+	,["Squad_Veh",	["o_motor_inf",	[]]]
 ];
 
 
