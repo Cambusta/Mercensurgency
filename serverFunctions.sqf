@@ -24,9 +24,11 @@ fnc_s_initializeAOIs = {
 			_aoi setVariable ["garrison", _aoi call fnc_s_selectGarrison, true];
 			
 			// Spawn
-			// Draw markers
 		};
 	} forEach aoiToPropertiesMapping;
+	
+	aoiInitialized = true;
+	publicVariable "aoiInitialized";
 };
 
 fnc_s_selectGarrison = {
