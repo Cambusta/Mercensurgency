@@ -119,3 +119,44 @@ dzn_fnc_setDateTime = {
 
 	setDate [_year, _month, _day, _time, 0];
 };
+
+
+fnc_drawGarrisonMarkers = {
+	// [@AOIObject] call fnc_drawGarrisonMarkers;
+	
+	{
+		if (!isNil format["%1", _x select 0]) then {
+			_aoi = _x select 0;
+			_mrkPos = getPosASL _aoi;
+			
+			// Variable are picked from @AOI but we can pick it from (_x select 1).
+			// [aoi_0, ["Stratis Air Base", "allies"]]
+			_ownedBy = _aoi getVariable "ownedBy";
+			_displayName = _aoi getVariable "displayName";
+			_garrison = _aoi getVariable "garrison";
+
+			// It should resolve "garrsionType" (_aoi getVariable "garrison") to marker type and color
+			// Types: https://community.bistudio.com/wiki/cfgMarkers
+			// colors: https://community.bistudio.com/wiki/setMarkerColorLocal - "ColorIndependent", "ColorOPFOR"
+			_mrkGarrisonType = [
+				switch (_ownedBy) do {
+					case "allies": { 	"ColorIndependent" };
+					case "hostiles": { 	"ColorOPFOR" };
+				}
+				, switch (_garrison) do {
+					case "squad": { 	"group1" };
+					case "platoon": { 	"group3" };
+				}
+			];
+			// _mrkGarrisonType = ["group3", "ColorOPFOR"];
+			 
+			_mrkstr = createMarkerLocal [
+				format["aoi_garrison_%1", _displayName],
+				[_mrkPos select 0, _mrkPos select 1]
+			];
+			_mrkstr setMarkerShapeLocal "ICON";
+			_mrkstr setMarkerTypeLocal (_mrkGarrisonType select 0);
+			_mrkstr setMarkerColorLocal (_mrkGarrisonType select 1);
+		};
+	} forEach aoiToPropertiesMapping;
+};
