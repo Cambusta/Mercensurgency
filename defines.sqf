@@ -14,6 +14,13 @@ aoiToPropertiesMapping = [
 	,[aoi_8,	["Air Station Mike-25",	"hostiles"]]
 ];
 
+// AOI's Garrisons
+// [ @GarrisonType,	@MarkerType,	@DYNAI_STUFF]
+aoiGarrisonsTypes = [
+	[ "Squad",	"group1",	[]]
+	,["Platoon",	"group3",	[]]
+	,["Squad_Veh",	"o_motor_inf",	[]]
+];
 
 
 // Enviroment Setting mapping
