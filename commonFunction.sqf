@@ -122,7 +122,8 @@ dzn_fnc_setDateTime = {
 
 
 fnc_drawGarrisonMarkers = {
-	// [@AOIObject] call fnc_drawGarrisonMarkers;
+	// [@AOIObject] spawn fnc_drawGarrisonMarkers;
+	private["_aoi", "_mrkPos", "_ownedBy", "_displayName", "_garrison", "_markerName", "_mrkGarrisonType", "_mrkstr"];
 	
 	{
 		if (!isNil format["%1", _x select 0]) then {
@@ -134,8 +135,9 @@ fnc_drawGarrisonMarkers = {
 			_ownedBy = _aoi getVariable "ownedBy";
 			_displayName = _aoi getVariable "displayName";
 			_garrison = _aoi getVariable "garrison";
+			_markerName = format["aoi_garrison_%1", _displayName];
 
-			// It should resolve "garrsionType" (_aoi getVariable "garrison") to marker type and color
+			// It should resolve "garrsionType" to marker type and color
 			// Types: https://community.bistudio.com/wiki/cfgMarkers
 			// colors: https://community.bistudio.com/wiki/setMarkerColorLocal - "ColorIndependent", "ColorOPFOR"
 			_mrkGarrisonType = [
@@ -149,11 +151,14 @@ fnc_drawGarrisonMarkers = {
 				}
 			];
 			// _mrkGarrisonType = ["group3", "ColorOPFOR"];
-			 
-			_mrkstr = createMarkerLocal [
-				format["aoi_garrison_%1", _displayName],
-				[_mrkPos select 0, _mrkPos select 1]
-			];
+
+			// Remove marker for AOI if it already exists
+			if !(getMarkerPos _markerName] isEqualTo [0,0,0]) then {
+				deleteMarkerLocal _markerName;
+			};
+			
+			// Draw marker
+			_mrkstr = createMarkerLocal [_markerName, [_mrkPos select 0, _mrkPos select 1]];
 			_mrkstr setMarkerShapeLocal "ICON";
 			_mrkstr setMarkerTypeLocal (_mrkGarrisonType select 0);
 			_mrkstr setMarkerColorLocal (_mrkGarrisonType select 1);
