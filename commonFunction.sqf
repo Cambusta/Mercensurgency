@@ -145,11 +145,14 @@ fnc_drawGarrisonMarkers = {
 					case "allies": { 	"ColorIndependent" };
 					case "hostiles": { 	"ColorOPFOR" };
 				}
-				, switch (_garrison) do {
+				, ([aoiGarrisonsTypes , _garrison] call dzn_fnc_getValueByKey) select 0
+				
+			];
+			/*	switch (_garrison) do {
 					case "squad": { 	"group1" };
 					case "platoon": { 	"group3" };
 				}
-			];
+			*/
 			// _mrkGarrisonType = ["group3", "ColorOPFOR"];
 
 			// Remove marker for AOI if it already exists
