@@ -22,6 +22,28 @@ aoiGarrisonsTypes = [
 	,["Squad_Veh",	["o_motor_inf",	[]]]
 ];
 
+aoiGarrisonToWeightMapping = [
+	[ "Squad",	2]
+	,["Platoon",	6]
+	,["Squad_Veh",	10]
+];
+
+aoiGarrisonToLocationTypeMapping = [
+	["LocationCity_F", 		10]
+	,["LocationVillage_F", 		5]
+	,["LocationFOB_F", 		10]
+	,["LocationCamp_F", 		15]
+];
+aoiAmountToWeightMapping = [
+	[0,	0.25]
+	,[1,	0.5]
+	,[2,	1]
+	,[3,	1.25]
+	,[4,	1.5]
+];
+
+
+
 
 // Enviroment Setting mapping
 weatherSettingsMapping = [
