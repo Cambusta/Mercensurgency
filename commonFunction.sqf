@@ -156,7 +156,7 @@ fnc_drawGarrisonMarkers = {
 			// _mrkGarrisonType = ["group3", "ColorOPFOR"];
 
 			// Remove marker for AOI if it already exists
-			if !(getMarkerPos _markerName] isEqualTo [0,0,0]) then {
+			if !(getMarkerPos _markerName] isEqualTo [0,0]) then {
 				deleteMarkerLocal _markerName;
 			};
 			
