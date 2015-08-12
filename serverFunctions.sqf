@@ -36,7 +36,20 @@ fnc_s_selectGarrison = {
 	// Return @TemplateName (String)
 	/*
 		Calculate garrison type according to AOI type, mission parameters (count of hostiles)
+		
+		AOIType
+		MisParam - Amount	- par_hostileForces_amount and par_alliedForces_amount
+		MisParam - Vehicles?
 	*/
+	
+	_aoiWeight = 0;
+	
+	switch (typeOf _this) do {
+		case "": {};
+		
+	};
+	
+	
 	
 	"GarrisonExample"
 };
