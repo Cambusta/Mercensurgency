@@ -32,24 +32,31 @@ fnc_s_initializeAOIs = {
 };
 
 fnc_s_selectGarrison = {
-	// @AOI call fnc_s_selectGarrison
-	// Return @TemplateName (String)
-	/*
-		Calculate garrison type according to AOI type, mission parameters (count of hostiles)
-		
-		AOIType
-		MisParam - Amount	- par_hostileForces_amount and par_alliedForces_amount
-		MisParam - Vehicles?
-	*/
+	// @TemplateName (String) = @AOI call fnc_s_selectGarrison
+	private["_garrisonType", "_aoiWeight"]
+	_garrisonType = "":
 	
-	_aoiWeight = 0;
+	// AOI Weight relative to Location type
+	_aoiWeight = [aoiGarrisonToLocationTypeMapping, typeOf _this] call dzn_fnc_getValueByKey;
 	
-	switch (typeOf _this) do {
-		case "": {};
-		
+	// AOI Weight relative to Mission Parameter - Side Amount
+	_aoiWeigthMultiplier = 	if (_this getVariable "ownedBy" == "allies") then {
+		[aoiAmountToWeightMapping, par_alliedForces_amount] call dzn_fnc_getValueByKey
+	} else {
+		[aoiAmountToWeightMapping, par_hostileForces_amount] call dzn_fnc_getValueByKey
 	};
+	_aoiWeight = _aoiWeight * _aoiWeigthMultiplier;
 	
+	_garrisonTypes = [];
 	
+	//aoiGarrisonToWeightMapping
+	{
+		if (_aoiWeight > (_x select 1)) then {
+			_garrisonTypes pushBack (_x select 0);
+		};
+	} forEach aoiGarrisonToWeightMapping;
 	
-	"GarrisonExample"
+	_garrisonType = _garrisonTypes call BIS_fnc_selectRandom;
+	
+	_garrisonType
 };
