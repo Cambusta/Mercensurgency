@@ -15,8 +15,5 @@ missionParametersSet = true;
 // =======================
 // Initialize AOIs
 // =======================
-waitUntil { time > 0};
+waitUntil { !isNil "fnc_s_initializeAOIs" };
 [] spawn fnc_s_initializeAOIs;
-
-
-
