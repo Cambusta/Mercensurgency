@@ -23,9 +23,9 @@ aoiGarrisonsTypes = [
 ];
 
 aoiGarrisonToWeightMapping = [
-	[ "Squad",	2]
-	,["Platoon",	6]
-	,["Squad_Veh",	10]
+	[ "Squad",	[2, 12]]
+	,["Platoon",	[6, 100]]
+	,["Squad_Veh",	[10, 100]]
 ];
 
 aoiGarrisonToLocationTypeMapping = [
