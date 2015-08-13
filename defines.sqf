@@ -53,6 +53,7 @@ aoiGarrisonToLocationTypeMapping = [
 	,["LocationCamp_F", 		20	]
 	,["LocationFOB_F", 		30	]
 ];
+
 aoiAmountToWeightMapping = [
 	 [0, 0.25]
 	,[1, 0.5]
@@ -61,6 +62,45 @@ aoiAmountToWeightMapping = [
 	,[4, 2]
 ];
 
+aoiGarrisonInfantryToOwnerMapping = [
+	 ["allies",		"I_Soldier_F"]
+	,["hostiles", 	"O_Soldier_F"]
+];
+
+aoiGarrisonVehiclesToOwnerMapping = [
+	 [
+		"allies",		
+		[
+			[/*Tech*/ "I_G_Offroad_01_armed_F"],
+			[/*Light*/ "I_MRAP_03_hmg_F"],
+			[/*Medium*/ "I_APC_Wheeled_03_cannon_F"],
+			[/*Heavy*/ "I_MBT_03_cannon_F"]
+		]
+	]
+	,[
+		"hostiles",		
+		[
+			[/*Tech*/ "O_G_Offroad_01_armed_F"],
+			[/*Light*/ "O_MRAP_02_hmg_F"],
+			[/*Medium*/ "O_APC_Wheeled_02_rcws_F"],
+			[/*Heavy*/ "O_MBT_02_cannon_F"]
+		]
+	]
+];
+
+aoiGarrisonsToKitsMapping = [
+	 ["1FT", 		["R","G","AR"] ]
+	,["1AT", 		["R","RAT"] ]
+	,["2FT", 		["R","G","AR"]]
+	,["1FT_1AT", 	["R","G","AR","RAT"] ]
+	,["3FT", 		["R","G","AR"] ]
+	,["2FT_1AT", 	["R","G","AR","RAT"] ]
+	,["1FT_1VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
+	,["2FT_1VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
+	,["2FT_2VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
+	,["3FT_1VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
+	,["3FT_2VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
+];
 
 
 
