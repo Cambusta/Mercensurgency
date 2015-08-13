@@ -1,4 +1,4 @@
-fnc_s_initializeAOIs = {
+fnc_aoi_s_initializeAOIs = {
 	// call fnc_initializeAOIs
 	private ["_aoi", "_displayName", "_owner", "_area", "_triggers"];
 	
@@ -19,7 +19,7 @@ fnc_s_initializeAOIs = {
 			_aoi setVariable ["area", _area, true];
 			_aoi setVariable ["ownedBy", _owner, true];
 			_aoi setVariable ["displayName", _displayName, true];
-			_aoi setVariable ["garrison", _aoi call fnc_s_selectGarrison, true];
+			_aoi setVariable ["garrison", _aoi call fnc_aoi_s_selectGarrison, true];
 			
 			// Spawn
 		};
@@ -31,8 +31,8 @@ fnc_s_initializeAOIs = {
 	player sideChat "AOI Initialized";
 };
 
-fnc_s_selectGarrison = {
-	// @TemplateName (String) = @AOI call fnc_s_selectGarrison
+fnc_aoi_s_selectGarrison = {
+	// @TemplateName (String) = @AOI call fnc_aoi_s_selectGarrison
 	private["_garrisonType","_aoiWeight","_aoiWeigthMultiplier","_garrisonTypes"]	;
 	
 	// AOI Weight relative to Location type
@@ -64,7 +64,7 @@ fnc_s_selectGarrison = {
 	_garrisonType
 };
 
-fnc_s_aoiInfo = {
+fnc_aoi_s_aoiInfo = {
 	//@AOI call fnc_s_getAOI
 
 			
@@ -77,3 +77,62 @@ fnc_s_aoiInfo = {
 		, str(_this getVariable "area")
 	];
 };
+
+
+fnc_aoi_s_spawnGarrisons = {
+	// @AOI spawn fnc_aoi_s_spawnGarrisons
+	/*	
+		MisPar:
+		par_hostileForces_amount	0,1,2,3,4
+		par_alliedForces_amount		0,1,2,3,4	
+		
+		par_hostileForces_vehicles	0,1,2,3,4
+		par_alliedForces_vehicles	0,1,2,3,4
+		
+		par_hostileForces_skill		0,1,2
+		par_alliedForces_skill		0,1,2	
+	*/
+	aoi_hostileInfantry = [aoiGarrisonInfantryToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
+	aoi_alliedInfantry = [aoiGarrisonInfantryToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
+
+	aoi_hostileVehicles = [aoiGarrisonVehiclesToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
+	aoi_alliedVehicles = [aoiGarrisonVehiclesToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
+
+	#define	VEHICLE_TYPE(TYPES,ID)	TYPES select ID
+	dzn_allowedHostileVehicleClasses = switch (par_hostileForces_vehicles) do {
+		case 0: { [] };
+		case 1: { [ VEHICLE_TYPE(aoi_hostileVehicles,0) ] };
+		case 2: { [ VEHICLE_TYPE(aoi_hostileVehicles,0), VEHICLE_TYPE(aoi_hostileVehicles,1) ] };
+		case 3: { [ VEHICLE_TYPE(aoi_hostileVehicles,0), VEHICLE_TYPE(aoi_hostileVehicles,1), VEHICLE_TYPE(aoi_hostileVehicles,2) ] };
+		case 4: { [ VEHICLE_TYPE(aoi_hostileVehicles,0), VEHICLE_TYPE(aoi_hostileVehicles,1), VEHICLE_TYPE(aoi_hostileVehicles,2), VEHICLE_TYPE(aoi_hostileVehicles,3) ] };
+	};	
+	dzn_allowedAlliedVehicleClasses = switch (par_hostileForces_vehicles) do {
+		case 0: { [] };
+		case 1: { [ VEHICLE_TYPE(aoi_alliedVehicles,0) ] };
+		case 2: { [ VEHICLE_TYPE(aoi_alliedVehicles,0), VEHICLE_TYPE(aoi_alliedVehicles,1) ] };
+		case 3: { [ VEHICLE_TYPE(aoi_alliedVehicles,0), VEHICLE_TYPE(aoi_alliedVehicles,1), VEHICLE_TYPE(aoi_alliedVehicles,2) ] };
+		case 4: { [ VEHICLE_TYPE(aoi_alliedVehicles,0), VEHICLE_TYPE(aoi_alliedVehicles,1), VEHICLE_TYPE(aoi_alliedVehicles,2), VEHICLE_TYPE(aoi_alliedVehicles,3) ] };
+	};
+	
+	
+	
+	{
+	
+	} forEach aoiToPropertiesMapping;
+};
+
+fnc_aoi_s_setUpDynaiZoneForAOI = {
+	// @AOI call fnc_aoi_s_setUpDynaiZoneForAOI
+
+	
+	
+};
+
+
+
+
+
+
+
+
+
