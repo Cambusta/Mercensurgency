@@ -46,11 +46,10 @@ fnc_aoi_s_selectGarrison = {
 		}
 	] call dzn_fnc_getValueByKey;
 	
-	_aoiWeight = _aoiWeight * _aoiWeigthMultiplier;	
+	_aoiWeight = _aoiWeight * _aoiWeigthMultiplier;
 	
+	_garrisonTypes = [];
 	#define	BETWEEN(VAL,X,Y)	(VAL >= X) && (Y >= VAL)
-	
-	_garrisonTypes = [];	
 	{
 		//if ( (_aoiWeight >= (_x select 1 select 0)) &&  ((_x select 1 select 1) >= _aoiWeight) ) then {
 		
