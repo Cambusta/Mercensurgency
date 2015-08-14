@@ -94,8 +94,8 @@ fnc_aoi_s_spawnGarrisons = {
 	aoi_hostileInfantry = [aoiGarrisonInfantryToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
 	aoi_alliedInfantry = [aoiGarrisonInfantryToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
 
-	aoi_hostileVehicles = "hostiles" call fnc_aoi_s_getAllowedVehicleTypes
-	aoi_alliedVehicles = "allies" call fnc_aoi_s_getAllowedVehicleTypes
+	aoi_hostileVehicles = "hostiles" call fnc_aoi_s_getAllowedVehicleTypes;
+	aoi_alliedVehicles = "allies" call fnc_aoi_s_getAllowedVehicleTypes;
 
 	{
 	
