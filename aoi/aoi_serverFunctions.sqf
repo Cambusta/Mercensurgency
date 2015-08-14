@@ -94,31 +94,28 @@ fnc_aoi_s_spawnGarrisons = {
 	aoi_hostileInfantry = [aoiGarrisonInfantryToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
 	aoi_alliedInfantry = [aoiGarrisonInfantryToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
 
-	aoi_hostileVehicles = [aoiGarrisonVehiclesToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
-	aoi_alliedVehicles = [aoiGarrisonVehiclesToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
+	aoi_hostileVehicles = "hostiles" call fnc_aoi_s_getAllowedVehicleTypes
+	aoi_alliedVehicles = "allies" call fnc_aoi_s_getAllowedVehicleTypes
 
-	#define	VEHICLE_TYPE(TYPES,ID)	TYPES select ID
-	dzn_allowedHostileVehicleClasses = switch (par_hostileForces_vehicles) do {
-		case 0: { [] };
-		case 1: { [ VEHICLE_TYPE(aoi_hostileVehicles,0) ] };
-		case 2: { [ VEHICLE_TYPE(aoi_hostileVehicles,0), VEHICLE_TYPE(aoi_hostileVehicles,1) ] };
-		case 3: { [ VEHICLE_TYPE(aoi_hostileVehicles,0), VEHICLE_TYPE(aoi_hostileVehicles,1), VEHICLE_TYPE(aoi_hostileVehicles,2) ] };
-		case 4: { [ VEHICLE_TYPE(aoi_hostileVehicles,0), VEHICLE_TYPE(aoi_hostileVehicles,1), VEHICLE_TYPE(aoi_hostileVehicles,2), VEHICLE_TYPE(aoi_hostileVehicles,3) ] };
-	};	
-	dzn_allowedAlliedVehicleClasses = switch (par_hostileForces_vehicles) do {
-		case 0: { [] };
-		case 1: { [ VEHICLE_TYPE(aoi_alliedVehicles,0) ] };
-		case 2: { [ VEHICLE_TYPE(aoi_alliedVehicles,0), VEHICLE_TYPE(aoi_alliedVehicles,1) ] };
-		case 3: { [ VEHICLE_TYPE(aoi_alliedVehicles,0), VEHICLE_TYPE(aoi_alliedVehicles,1), VEHICLE_TYPE(aoi_alliedVehicles,2) ] };
-		case 4: { [ VEHICLE_TYPE(aoi_alliedVehicles,0), VEHICLE_TYPE(aoi_alliedVehicles,1), VEHICLE_TYPE(aoi_alliedVehicles,2), VEHICLE_TYPE(aoi_alliedVehicles,3) ] };
-	};
-	
-	
-	
 	{
 	
 	} forEach aoiToPropertiesMapping;
 };
+
+fnc_aoi_s_getAllowedVehicleTypes = {
+	// "allies"/"hostiles" call fnc_aoi_s_getAllowedVehicleTypes
+	private["_definedVehicleClasses", "_vehicleClasses"];
+	
+	_definedVehicleClasses = [aoiGarrisonVehiclesToOwnerMapping, _this] call dzn_fnc_getValueByKey;
+	_vehicleClasses = [];
+	for "_i" from 0 to par_hostileForces_vehicles do {
+		if (_i > 0) then {
+			_vehicleClasses pushBack (_definedVehicleClasses select (_i - 1));
+		};
+	};
+	
+	_vehicleClasses
+}
 
 fnc_aoi_s_setUpDynaiZoneForAOI = {
 	// @AOI call fnc_aoi_s_setUpDynaiZoneForAOI
