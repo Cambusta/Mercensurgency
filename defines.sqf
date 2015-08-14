@@ -80,7 +80,7 @@ aoiGarrisonVehiclesToOwnerMapping = [
 	,[
 		"hostiles",		
 		[
-			[/*Tech*/ "O_G_Offroad_01_armed_F"],
+			[/*Tech*/ "O_G_Offroad_01_armed_F", "O_G_Offroad_01_armed_F"],
 			[/*Light*/ "O_MRAP_02_hmg_F"],
 			[/*Medium*/ "O_APC_Wheeled_02_rcws_F"],
 			[/*Heavy*/ "O_MBT_02_cannon_F"]
