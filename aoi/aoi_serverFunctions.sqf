@@ -1,3 +1,64 @@
+fnc_aoi_s_spawnGarrisons = {
+	// @AOI spawn fnc_aoi_s_spawnGarrisons
+	// Method-orchestrator
+	/*	
+		MisPar:
+		par_hostileForces_vehicles	0,1,2,3,4
+		par_alliedForces_vehicles	0,1,2,3,4
+		
+		par_hostileForces_skill		0,1,2
+		par_alliedForces_skill		0,1,2	
+		
+		// Not used here //
+		par_hostileForces_amount	0,1,2,3,4
+		par_alliedForces_amount		0,1,2,3,4	
+		
+	*/
+	
+
+	{
+	
+	} forEach aoiToPropertiesMapping;
+};
+
+
+
+fnc_aoi_s_getAllowedVehicleTypes = {
+	// @ArrayOfVehicleTypes = "allies"/"hostiles" call fnc_aoi_s_getAllowedVehicleTypes
+	private["_definedVehicleClasses", "_vehicleClasses", "_amount"];
+	
+	_definedVehicleClasses = [aoiGarrisonVehiclesToOwnerMapping, _this] call dzn_fnc_getValueByKey;
+	_vehicleClasses = [];
+	_amount = if (_this == "allies") then { par_alliedForces_amount } else { par_hostileForces_vehicles };
+	for "_i" from 0 to _amount do {
+		if (_i > 0) then {
+			_vehicleClasses pushBack (_definedVehicleClasses select (_i - 1));
+		};
+	};
+	_vehicleClasses
+}
+
+
+
+
+
+
+fnc_aoi_s_setUpDynaiZoneForAOI = {
+	// @AOI call fnc_aoi_s_setUpDynaiZoneForAOI
+
+	
+	
+};
+
+
+
+
+
+
+
+
+
+
 fnc_aoi_s_initializeAOIs = {
 	// call fnc_initializeAOIs
 	private ["_aoi", "_displayName", "_owner", "_area", "_triggers"];
@@ -77,52 +138,6 @@ fnc_aoi_s_aoiInfo = {
 	];
 };
 
-
-fnc_aoi_s_spawnGarrisons = {
-	// @AOI spawn fnc_aoi_s_spawnGarrisons
-	/*	
-		MisPar:
-		par_hostileForces_amount	0,1,2,3,4
-		par_alliedForces_amount		0,1,2,3,4	
-		
-		par_hostileForces_vehicles	0,1,2,3,4
-		par_alliedForces_vehicles	0,1,2,3,4
-		
-		par_hostileForces_skill		0,1,2
-		par_alliedForces_skill		0,1,2	
-	*/
-	aoi_hostileInfantry = [aoiGarrisonInfantryToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
-	aoi_alliedInfantry = [aoiGarrisonInfantryToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
-
-	aoi_hostileVehicles = "hostiles" call fnc_aoi_s_getAllowedVehicleTypes;
-	aoi_alliedVehicles = "allies" call fnc_aoi_s_getAllowedVehicleTypes;
-
-	{
-	
-	} forEach aoiToPropertiesMapping;
-};
-
-fnc_aoi_s_getAllowedVehicleTypes = {
-	// "allies"/"hostiles" call fnc_aoi_s_getAllowedVehicleTypes
-	private["_definedVehicleClasses", "_vehicleClasses"];
-	
-	_definedVehicleClasses = [aoiGarrisonVehiclesToOwnerMapping, _this] call dzn_fnc_getValueByKey;
-	_vehicleClasses = [];
-	for "_i" from 0 to par_hostileForces_vehicles do {
-		if (_i > 0) then {
-			_vehicleClasses pushBack (_definedVehicleClasses select (_i - 1));
-		};
-	};
-	
-	_vehicleClasses
-}
-
-fnc_aoi_s_setUpDynaiZoneForAOI = {
-	// @AOI call fnc_aoi_s_setUpDynaiZoneForAOI
-
-	
-	
-};
 
 
 
