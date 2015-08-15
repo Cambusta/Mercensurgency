@@ -88,47 +88,57 @@ aoiGarrisonVehiclesToOwnerMapping = [
 	]
 ];
 
+#define	G_Fireteam		"[['%1',[],'kit_%2_R'],['%1',[],'kit_%2_AR'],['%1',[],'kit_%2_G'],['%1',[],'kit_%2_R']]"
+#define	G_ATTeam		"[['%1',[],'kit_%2_AT'],['%1',[],'kit_%2_R'],['%1',[],'kit_%2_AT']]"
+#define	G_Indoors2		"[['%1',['indoors'],'kit_%2_R'], ['%1',['indoors'],'kit_%2_G']]"
+#define	G_Indoors3		"[['%1',['indoors'],'kit_%2_R'], ['%1',['indoors'],'kit_%2_G'], ['%1',['indoors'],'kit_%2_R']]"
+#define	G_CVehicle		"[['%3','isVehicle','%4'],['%1',[0,'driver'],'%2'],['%1',[0,'gunner'],'%2'],['%1',[0,'commander'],'%2']]"
+
 aoiGarrisonsToGroupReferencesMapping = [
 	[
 		"1FT", 	
-		"[
-			[
-				1,
-				[
-					['%1',[],'kit_%2_R'],
-					['%1',[],'kit_%2_AR'],
-					['%1',[],'kit_%2_G'],
-					['%1',[],'kit_%2_R']
-				]
-			]
-		]"
+		format ["[[%1,%2]]", 1, G_Fireteam]
 	]
-	,["1AT", 		["R","RAT"] ]
-	,["2FT", 		["R","G","AR"]]
-	,["1FT_1AT", 		["R","G","AR","RAT"] ]
-	,["3FT", 		["R","G","AR"] ]
-	,["2FT_1AT", 		["R","G","AR","RAT"] ]
-	,["1FT_1VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
-	,["2FT_1VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
-	,["2FT_2VH"		[ ["R","G","AR","RAT"], ["C"] ]]
-	,["3FT_1VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
-	,["3FT_2VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
-];
-
-
-
-aoiGarrisonsToKitsMapping = [
-	 ["1FT", 		["R","G","AR"] ]
-	,["1AT", 		["R","RAT"] ]
-	,["2FT", 		["R","G","AR"]]
-	,["1FT_1AT", 	["R","G","AR","RAT"] ]
-	,["3FT", 		["R","G","AR"] ]
-	,["2FT_1AT", 	["R","G","AR","RAT"] ]
-	,["1FT_1VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
-	,["2FT_1VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
-	,["2FT_2VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
-	,["3FT_1VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
-	,["3FT_2VH", 	[ ["R","G","AR","RAT"], ["C"] ]]
+	,[
+		"1AT", 
+		format ["[[%1,%2],[%3,%4]]", 1, G_Fireteam, 1, G_Indoors2]
+	]
+	,[
+		"2FT",
+		format ["[[%1,%2],[%3,%4]]", 2, G_Fireteam, 1, G_Indoors2]
+	]
+	,[
+		"1FT_1AT", 
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 1, G_Fireteam, 1, G_ATTeam, 1, G_Indoors2]
+	]
+	,[
+		"3FT",
+		format ["[[%1,%2],[%3,%4]]", 3, G_Fireteam, 1, G_Indoors3]
+	]
+	,[
+		"2FT_1AT", 
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 2, G_Fireteam, 1, G_ATTeam, 1, G_Indoors3]		
+	]
+	,[
+		"1FT_1VH",
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 1, G_Fireteam, 1, G_CVehicle, 1, G_Indoors2]	
+	]
+	,[
+		"2FT_1VH", 
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 2, G_Fireteam, 1, G_CVehicle, 1, G_Indoors3]
+	]
+	,[
+		"2FT_2VH",
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 2, G_Fireteam, 2, G_CVehicle, 1, G_Indoors3]
+	]
+	,[
+		"3FT_1VH",
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 3, G_Fireteam, 1, G_CVehicle, 1, G_Indoors3]
+	]
+	,[	
+		"3FT_2VH",
+		format ["[[%1,%2],[%3,%4],[%5,%6]]", 3, G_Fireteam, 2, G_CVehicle, 1, G_Indoors3]
+	]
 ];
 
 
