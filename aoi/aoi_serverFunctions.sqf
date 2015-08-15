@@ -46,9 +46,8 @@ fnc_aoi_s_spawnGarrisons = {
 			];
 			
 			{
-				_x pushBack ([aoiGarrisonSkillLevelMapping, call compile format ["par_%1Forces_skill",_side]] call dzn_fnc_getValueByKey);			
+				_x pushBack ([aoiGarrisonSkillLevelMapping, call compile format ["par_%1Forces_skill", _side]] call dzn_fnc_getValueByKey);	
 			} forEach _unitRefs;
-			_val = _unitRefs;
 			
 			[
 				format["aoi_garrison_%1", str(_aoi)]
@@ -74,7 +73,7 @@ fnc_aoi_s_selectGarrison = {
 	_aoiWeight = [aoiGarrisonToLocationTypeMapping, typeOf _this] call dzn_fnc_getValueByKey;
 	_aoiWeigthMultiplier = [
 		aoiAmountToWeightMapping, 
-		call compile format [ "par_%1Forces_amount", _this getVariable "ownedBy"];
+		call compile format ["par_%1Forces_amount", _this getVariable "ownedBy"]
 	] call dzn_fnc_getValueByKey;
 	
 	_aoiWeight = _aoiWeight * _aoiWeigthMultiplier;
@@ -82,8 +81,6 @@ fnc_aoi_s_selectGarrison = {
 	_garrisonTypes = [];
 	#define	BETWEEN(VAL,X,Y)	(VAL >= X) && (Y >= VAL)
 	{
-		//if ( (_aoiWeight >= (_x select 1 select 0)) &&  ((_x select 1 select 1) >= _aoiWeight) ) then {
-		
 		if ( BETWEEN(_aoiWeight, _x select 1 select 0, _x select 1 select 1) ) then {
 			_garrisonTypes pushBack (_x select 0);
 		};
