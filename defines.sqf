@@ -88,6 +88,35 @@ aoiGarrisonVehiclesToOwnerMapping = [
 	]
 ];
 
+aoiGarrisonsToGroupReferencesMapping = [
+	[
+		"1FT", 	
+		"[
+			[
+				1,
+				[
+					['%1',[],'kit_%2_R'],
+					['%1',[],'kit_%2_AR'],
+					['%1',[],'kit_%2_G'],
+					['%1',[],'kit_%2_R']
+				]
+			]
+		]"
+	]
+	,["1AT", 		["R","RAT"] ]
+	,["2FT", 		["R","G","AR"]]
+	,["1FT_1AT", 		["R","G","AR","RAT"] ]
+	,["3FT", 		["R","G","AR"] ]
+	,["2FT_1AT", 		["R","G","AR","RAT"] ]
+	,["1FT_1VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
+	,["2FT_1VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
+	,["2FT_2VH"		[ ["R","G","AR","RAT"], ["C"] ]]
+	,["3FT_1VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
+	,["3FT_2VH", 		[ ["R","G","AR","RAT"], ["C"] ]]
+];
+
+
+
 aoiGarrisonsToKitsMapping = [
 	 ["1FT", 		["R","G","AR"] ]
 	,["1AT", 		["R","RAT"] ]
