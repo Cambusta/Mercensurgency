@@ -97,7 +97,7 @@ aoiGarrisonVehiclesToOwnerMapping = [
 #define	G_ATTeam		"[['%1',[],'kit_%2_AT'],['%1',[],'kit_%2_R'],['%1',[],'kit_%2_AT']]"
 #define	G_Indoors2		"[['%1',['indoors'],'kit_%2_R'], ['%1',['indoors'],'kit_%2_G']]"
 #define	G_Indoors3		"[['%1',['indoors'],'kit_%2_R'], ['%1',['indoors'],'kit_%2_G'], ['%1',['indoors'],'kit_%2_R']]"
-#define	G_CVehicle		"[['%3','isVehicle','%4'],['%1',[0,'driver'],'%2'],['%1',[0,'gunner'],'%2'],['%1',[0,'commander'],'%2']]"
+#define	G_CVehicle		"[['%3','isVehicle','kit_vehicle'],['%1',[0,'driver'],'kit_%2_C'],['%1',[0,'gunner'],'kit_%2_C'],['%1',[0,'commander'],'kit_%2_R']]"
 
 aoiGarrisonsToGroupReferencesMapping = [
 	[
