@@ -1,23 +1,28 @@
 fnc_aoi_s_spawnGarrisons = {
 	// @AOI spawn fnc_aoi_s_spawnGarrisons
 	// Method-orchestrator
-	/*	
-		MisPar:
-		par_hostileForces_vehicles	0,1,2,3,4
-		par_alliedForces_vehicles	0,1,2,3,4
-		
-		par_hostileForces_skill		0,1,2
-		par_alliedForces_skill		0,1,2	
-		
-		// Not used here //
-		par_hostileForces_amount	0,1,2,3,4
-		par_alliedForces_amount		0,1,2,3,4	
-		
-	*/
-	
-
+	private ["_aoi","_side","_unitRefs"];
 	{
-	
+		if (!isNil format["%1", _x select 0]) then {
+			_aoi = _x select 0;
+			_side = _aoi getVariable "ownedBy";
+			_unitRefs = format [
+				[aoiGarrisonsToGroupReferencesMapping,  _aoi getVariable "garrison"] call dzn_fnc_getValueByKey	
+				, [aoiGarrisonInfantryToOwnerMapping, _side] call dzn_fnc_getValueByKey
+				, _side
+				, ((_side call fnc_aoi_s_getAllowedVehicleTypes) call BIS_fnc_selectRandom) call BIS_fnc_selectRandom
+			];
+
+			[
+				format["aoi_garrison_%1", str(_aoi)]
+				, [aoiSidesMapping, _side] call dzn_fnc_getValueByKey
+				, true
+				, _aoi getVariable "area"
+				, "randomize"
+				, _unitRefs
+				, aoiGarrisonDefaultBehaviorSettings
+			] spawn dzn_fnc_dynai_addNewZone;
+		};
 	} forEach aoiToPropertiesMapping;
 };
 
