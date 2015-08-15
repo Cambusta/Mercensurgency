@@ -35,6 +35,13 @@ aoiGarrisonsToMarkerMapping = [
 	,["3FT_2VH", 	"b_armor"]
 ];
 
+aoiMarkerColorToSideMapping = [
+	["allies",		"ColorGUER"]
+	,["hostiles", 	"ColorOPFOR"]
+];
+
+
+
 aoiGarrisonToWeightMapping = [
 	 ["1FT", 		[1, 5]]
 	,["1AT", 		[2, 5]]
