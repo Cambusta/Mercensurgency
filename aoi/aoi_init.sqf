@@ -15,12 +15,6 @@
 call compile preProcessFileLineNumbers "aoi\aoi_commonFunctions.sqf";
 if (isServer || isDedicated) then {
 	call compile preProcessFileLineNumbers "aoi\aoi_serverFunctions.sqf";
-	
-	// Defines
-	aoi_hostileInfantry = [aoiGarrisonInfantryToOwnerMapping, "hostiles"] call dzn_fnc_getValueByKey;
-	aoi_alliedInfantry = [aoiGarrisonInfantryToOwnerMapping, "allies"] call dzn_fnc_getValueByKey;
-	aoi_hostileVehicles = "hostiles" call fnc_aoi_s_getAllowedVehicleTypes;
-	aoi_alliedVehicles = "allies" call fnc_aoi_s_getAllowedVehicleTypes;
 };
 
 // if (hasInterface) then {};
