@@ -1,5 +1,5 @@
 fnc_aoi_s_spawnGarrisons = {
-	// @AOI spawn fnc_aoi_s_spawnGarrisons
+	// call fnc_aoi_s_spawnGarrisons
 	// Method-orchestrator
 	private ["_aoi","_side","_unitRefs"];
 	{
@@ -23,10 +23,10 @@ fnc_aoi_s_spawnGarrisons = {
 				, aoiGarrisonDefaultBehaviorSettings
 			] spawn dzn_fnc_dynai_addNewZone;
 		};
+		
+		sleep 2;
 	} forEach aoiToPropertiesMapping;
 };
-
-
 
 fnc_aoi_s_getAllowedVehicleTypes = {
 	// @ArrayOfVehicleTypes = "allies"/"hostiles" call fnc_aoi_s_getAllowedVehicleTypes
@@ -41,28 +41,7 @@ fnc_aoi_s_getAllowedVehicleTypes = {
 		};
 	};
 	_vehicleClasses
-}
-
-
-
-
-
-
-fnc_aoi_s_setUpDynaiZoneForAOI = {
-	// @AOI call fnc_aoi_s_setUpDynaiZoneForAOI
-
-	
-	
 };
-
-
-
-
-
-
-
-
-
 
 fnc_aoi_s_initializeAOIs = {
 	// call fnc_initializeAOIs
@@ -92,9 +71,7 @@ fnc_aoi_s_initializeAOIs = {
 	} forEach aoiToPropertiesMapping;
 	
 	aoiInitialized = true;
-	publicVariable "aoiInitialized";
-	
-	player sideChat "AOI Initialized";
+	publicVariable "aoiInitialized";	
 };
 
 fnc_aoi_s_selectGarrison = {
@@ -142,13 +119,3 @@ fnc_aoi_s_aoiInfo = {
 		, str(_this getVariable "area")
 	];
 };
-
-
-
-
-
-
-
-
-
-
