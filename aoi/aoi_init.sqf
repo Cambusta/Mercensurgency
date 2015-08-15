@@ -6,9 +6,9 @@
 if (isServer || isDedicated) then {
 	#include "aoi_serverFunctions.sqf";
 	
-	waitUntil { time > 1 };
+	waitUntil { time > 2 };
 	call fnc_aoi_s_initializeAOIs;
-		
+
 	waitUntil { time > 6 };
 	call fnc_aoi_s_spawnGarrisons
 };
