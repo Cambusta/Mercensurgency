@@ -13,8 +13,6 @@ fnc_aoi_s_spawnGarrisons = {
 				, ((_side call fnc_aoi_s_getAllowedVehicleTypes) call BIS_fnc_selectRandom) call BIS_fnc_selectRandom
 			];
 			
-			player sideChat _unitRefs;
-			val1 = _unitRefs;
 			[
 				format["aoi_garrison_%1", str(_aoi)]
 				, [aoiSidesMapping, _side] call dzn_fnc_getValueByKey
