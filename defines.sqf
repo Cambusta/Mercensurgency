@@ -14,6 +14,11 @@ aoiToPropertiesMapping = [
 	,[aoi_8,	["Air Station Mike-25",	"hostiles"]]
 ];
 
+aoiSidesMapping = [
+	["allies",	"RESISTANCE"]
+	,["hostiles", 	"EAST"]
+];
+
 // AOI's Garrisons
 // [ @GarrisonType, @MarkerType[Allied, Hostile], @DYNAI_STUFF]
 aoiGarrisonsToMarkerMapping = [
