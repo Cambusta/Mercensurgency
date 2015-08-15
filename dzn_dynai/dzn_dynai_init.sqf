@@ -31,7 +31,7 @@ dzn_dynai_skill = if (dzn_dynai_complexSkill) then {
 	]
 } else {
 	/* 	Simple Skill Level */
-	[aoiGarrisonSkillLevelMapping, par_hostileForces_skill]	call dzn_fnc_getValueByKey
+	0.5
 };
 dzn_dynai_complexSkill = [ dzn_dynai_complexSkill, dzn_dynai_skill ];
 
