@@ -100,7 +100,7 @@ aoiGarrisonVehiclesToOwnerMapping = [
 	]
 ];
 
-#define	G_Fireteam		"[['%1',[],'kit_%2_R'],['%1',[],'kit_%2_AR'],['%1',[],'kit_%2_G'],['%1',[],'kit_%2_R']]"
+#define	G_Fireteam		"[['%1',[],'kit_%2_R'],['%1',[],'kit_%2_AR'],['%1',[],'kit_%2_G'],['%1',[],'kit_%2_R']]" 
 #define	G_ATTeam		"[['%1',[],'kit_%2_AT'],['%1',[],'kit_%2_R'],['%1',[],'kit_%2_AT']]"
 #define	G_Indoors2		"[['%1',['indoors'],'kit_%2_R'], ['%1',['indoors'],'kit_%2_G']]"
 #define	G_Indoors3		"[['%1',['indoors'],'kit_%2_R'], ['%1',['indoors'],'kit_%2_G'], ['%1',['indoors'],'kit_%2_R']]"
