@@ -38,12 +38,17 @@ fnc_aoi_s_spawnGarrisons = {
 		if (!isNil format["%1", _x select 0]) then {
 			_aoi = _x select 0;
 			_side = _aoi getVariable "ownedBy";
-			_unitRefs = format [
+			_unitRefs = call compile format [
 				[aoiGarrisonsToGroupReferencesMapping,  _aoi getVariable "garrison"] call dzn_fnc_getValueByKey	
 				, [aoiGarrisonInfantryToOwnerMapping, _side] call dzn_fnc_getValueByKey
 				, _side
 				, ((_side call fnc_aoi_s_getAllowedVehicleTypes) call BIS_fnc_selectRandom) call BIS_fnc_selectRandom
 			];
+			
+			{
+				_x pushBack ([aoiGarrisonSkillLevelMapping, call compile format ["par_%1Forces_skill",_side]] call dzn_fnc_getValueByKey);			
+			} forEach _unitRefs;
+			_val = _unitRefs;
 			
 			[
 				format["aoi_garrison_%1", str(_aoi)]
@@ -51,7 +56,7 @@ fnc_aoi_s_spawnGarrisons = {
 				, true
 				, _aoi getVariable "area"
 				, "randomize"
-				, call compile _unitRefs
+				, _unitRefs
 				, aoiGarrisonDefaultBehaviorSettings
 			] spawn dzn_fnc_dynai_addNewZone;
 		};
