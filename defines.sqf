@@ -146,6 +146,7 @@ aoiGarrisonsToGroupReferencesMapping = [
 	]
 ];
 
+aoiGarrisonDefaultBehaviorSettings = ["LIMITED","SAFE","YELLOW","STAG COLUMN"];
 
 
 // Enviroment Setting mapping
