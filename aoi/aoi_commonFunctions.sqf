@@ -15,7 +15,7 @@ fnc_drawGarrisonMarkers = {
 			
 			_mrkGarrisonType = [
 				[aoiGarrisonsToMarkerMapping , _garrison] call dzn_fnc_getValueByKey
-				,[aoiMarkerColorToSideMapping. _ownedBy] call dzn_fnc_getValueByKey
+				,[aoiMarkerColorToSideMapping, _ownedBy] call dzn_fnc_getValueByKey
 			];
 			
 			// Remove marker for AOI if it already exists
