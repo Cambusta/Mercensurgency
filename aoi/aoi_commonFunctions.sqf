@@ -15,10 +15,7 @@ fnc_drawGarrisonMarkers = {
 			
 			_mrkGarrisonType = [
 				[aoiGarrisonsToMarkerMapping , _garrison] call dzn_fnc_getValueByKey
-				,switch (_ownedBy) do {
-					case "allies": { 	"ColorGUER" };
-					case "hostiles": { 	"ColorOPFOR" };
-				}			
+				,[aoiMarkerColorToSideMapping, _ownedBy] call dzn_fnc_getValueByKey
 			];
 			
 			// Remove marker for AOI if it already exists
