@@ -327,7 +327,7 @@ class Mission
 					position[]={4321.8208,177.61264,4379.3511};
 					id=14;
 					side="LOGIC";
-					vehicle="LocationFOB_F";
+					vehicle="LocationOutpost_F";
 					leader=1;
 					skill=0.60000002;
 					text="aoi_3";
@@ -347,7 +347,7 @@ class Mission
 					position[]={2984.1951,171.39951,1869.8188};
 					id=15;
 					side="LOGIC";
-					vehicle="LocationFOB_F";
+					vehicle="LocationOutpost_F";
 					leader=1;
 					skill=0.60000002;
 					text="aoi_4";
@@ -367,7 +367,7 @@ class Mission
 					position[]={6421.0244,7.5826197,5415.4849};
 					id=16;
 					side="LOGIC";
-					vehicle="LocationFOB_F";
+					vehicle="LocationCamp_F";
 					leader=1;
 					skill=0.60000002;
 					text="aoi_5";
@@ -387,7 +387,7 @@ class Mission
 					position[]={1982.4808,2.5772767,3525.1807};
 					id=17;
 					side="LOGIC";
-					vehicle="LocationFOB_F";
+					vehicle="LocationOutpost_F";
 					leader=1;
 					skill=0.60000002;
 					text="aoi_6";
@@ -407,7 +407,7 @@ class Mission
 					position[]={3288.0115,229.17999,2932.4819};
 					id=18;
 					side="LOGIC";
-					vehicle="LocationFOB_F";
+					vehicle="LocationCamp_F";
 					leader=1;
 					skill=0.60000002;
 					text="aoi_7";
@@ -439,112 +439,12 @@ class Mission
 	};
 	class Markers
 	{
-		items=11;
+		items=1;
 		class Item0
 		{
 			position[]={5026.5908,208.78201,5914.0386};
 			name="respawn_west";
 			type="Empty";
-		};
-		class Item1
-		{
-			position[]={2223.4114,5.212759,3580.3247};
-			name="asd";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorRed";
-			a=400;
-			b=400;
-		};
-		class Item2
-		{
-			position[]={3164.9163,125.72675,2034.8047};
-			name="asd_1";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorRed";
-			a=400;
-			b=400;
-		};
-		class Item3
-		{
-			position[]={2368.8469,24.573118,2853.4712};
-			name="asd_2";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorRed";
-			a=400;
-			b=400;
-		};
-		class Item4
-		{
-			position[]={3249.1157,208.49512,3060.0508};
-			name="asd_3";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorRed";
-			a=400;
-			b=400;
-		};
-		class Item5
-		{
-			position[]={4014.5671,141.76146,3756.3013};
-			name="asd_4";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorRed";
-			a=400;
-			b=400;
-		};
-		class Item6
-		{
-			position[]={6372.1548,26.394926,5202.3569};
-			name="asd_5";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorGreen";
-			a=400;
-			b=400;
-		};
-		class Item7
-		{
-			position[]={4160.0015,213.76225,4559.6655};
-			name="asd_5_1";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorGreen";
-			a=400;
-			b=400;
-		};
-		class Item8
-		{
-			position[]={3141.9514,32.603481,5730.2827};
-			name="asd_5_2";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorGreen";
-			a=400;
-			b=400;
-		};
-		class Item9
-		{
-			position[]={2162.1743,8.1016645,5416.5874};
-			name="asd_5_3";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorGreen";
-			a=400;
-			b=400;
-		};
-		class Item10
-		{
-			position[]={4848.9072,113.64112,5684.3755};
-			name="asd_5_4";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorGreen";
-			a=400;
-			b=400;
 		};
 	};
 	class Sensors

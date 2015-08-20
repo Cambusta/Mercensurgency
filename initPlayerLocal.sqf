@@ -7,6 +7,8 @@ if (isNil "missionParametersSet") then {
   
 	missionParametersSet = true;
 	
-	
-	
+	[] spawn {
+		waitUntil {!isNil "aoiInitialized"};
+		[] spawn fnc_drawGarrisonMarkers;
+	};
 };

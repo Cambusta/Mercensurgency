@@ -156,7 +156,7 @@ class Params
 		values[] = {""};
 		default = "";
 	};
-	class par_hostileForces_skill
+	class par_hostilesForces_skill
 	{
 		title = "  Hostile forces - Skill";
 		values[] = {0,1,2};
@@ -167,7 +167,7 @@ class Params
 		};
 		default = 0; 		
 	};
-	class par_hostileForces_amount
+	class par_hostilesForces_amount
 	{
 		title = "  Hostile forces - Amount";
 		values[] = {0,1,2,3,4};
@@ -180,7 +180,7 @@ class Params
 		};
 		default = 2; 		
 	};
-	class par_hostileForces_vehicles
+	class par_hostilesForces_vehicles
 	{
 		title = "  Hostile forces - Vehicles";
 		values[] = {0,1,2,3,4};
@@ -201,7 +201,7 @@ class Params
 		values[] = {""};
 		default = "";
 	};
-	class par_alliedForces_skill
+	class par_alliesForces_skill
 	{
 		title = "  Allied forces - Skill";
 		values[] = {0,1,2};
@@ -212,7 +212,7 @@ class Params
 		};
 		default = 0; 		
 	};
-	class par_alliedForces_amount
+	class par_alliesForces_amount
 	{
 		title = "  Allied forces - Amount";
 		values[] = {0,1,2,3,4};
@@ -225,7 +225,7 @@ class Params
 		};
 		default = 2; 		
 	};
-	class par_alliedForces_vehicles
+	class par_alliesForces_vehicles
 	{
 		title = "  Allied forces - Vehicles";
 		values[] = {0,1,2,3,4};
