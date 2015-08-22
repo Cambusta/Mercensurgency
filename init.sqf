@@ -18,3 +18,6 @@ enableSentences false;
 
 // Task Generator
 [] execVM "taskGenerator\taskgen_init.sqf";
+
+// Market
+if (hasInterface && {!isNull player}) then { [0.3] execVM "dzn_market\dzn_market_init.sqf"; };
