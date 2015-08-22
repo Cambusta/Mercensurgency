@@ -1,4 +1,21 @@
 <objects>
+  <!-- Squad Logics -->
+  <gameLogic type="GameLogic" name="sqLogic_0">
+    <synchronizedWith>
+      <unit type="playable" name="" />
+      <unit type="playable" name="" />
+      ...
+    </synchronizedWith>
+  </gameLogic>
+  <gameLogic type="GameLogic" name="sqLogic_1">
+    <synchronizedWith>
+      <unit type="playable" name="" />
+      <unit type="playable" name="" />
+      ...
+    </synchronizedWith>
+  </gameLogic>
+  
+  
   <!-- Areas of interest -->
   <gameLogic type="Location" class="Town">
     <name>aoi_0</name>
