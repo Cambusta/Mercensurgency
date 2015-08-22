@@ -15,3 +15,6 @@ enableSentences false;
 
 // Squad
 [] execVM "squad\squad_init.sqf";
+
+// Task Generator
+[] execVM "taskGenerator\taskgen_init.sqf";
