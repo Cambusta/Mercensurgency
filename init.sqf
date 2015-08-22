@@ -10,5 +10,8 @@ enableSentences false;
 // dzn_dynai
 [] execVM "dzn_dynai\dzn_dynai_init.sqf";
 
-
+// AOI
 [] execVM "aoi\aoi_init.sqf";
+
+// Squad
+[] execVM "squad\squad_init.sqf";
