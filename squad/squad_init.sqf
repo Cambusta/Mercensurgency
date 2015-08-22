@@ -10,6 +10,7 @@ if (isServer || isDedicated) then {
    			if (_x == leader (group _x)) then {
 		   		(group _x) setGroupIdGlobal [[squadLogicToNameMapping, _sqLogic] call dzn_fnc_getValueByKey];
 				_sqLogic setVariable ["squadName", [squadLogicToNameMapping, _sqLogic] call dzn_fnc_getValueByKey, true];
+				_sqLogic setVariable ["isOnTask", false, true];
 		   	};
    		} forEach _units;
 	} forEach squadLogics;
@@ -18,15 +19,19 @@ if (isServer || isDedicated) then {
 	publicVariable "squadInitialized";
 };
 
-if (hasInterface && { !isNull player }) then {
+if (hasInterface && { !isNull player && isNil "playerSquadInitialized" }) then {
+	playerSquadInitialized = true;
 	waitUntil { !isNil "squadInitialized" };
 	
 	{
-		if (typeOf _x == "Logic" && !isNil {_x getVariable "squadName"} && isNil {_x getVariable (name player)}) then {
-			_x setVariable [(name(player)), [
-		   		["cash",	par_startCash]
-		   		,["perks",	[]]
-		   	], true];
+		if (typeOf _x == "Logic" && !isNil {_x getVariable "squadName"}) then {
+			if (isNil {_x getVariable (name player)}) then {
+				_x setVariable [(name(player)), [
+			   		["cash",	par_startCash]
+			   		,["perks",	[]]
+			   	], true];
+			};
+			player setVariable ["squadLogic", _x, true];
 		};
-	} forEach (synchronizedObjects player)
+	} forEach (synchronizedObjects player);
 };
