@@ -1,4 +1,10 @@
 // Here will be common arrays and other configurable stuff for mission
+// Squads
+squadLogics = [sqLogic_0, sqLogic_1];
+squadLogicToNameMapping = [
+	 [sqLogic_0,	"Deus Vult"]
+	,[sqLogic_1,	"Ave Maria"]
+];
 
 // AoI to Properties
 // [ @IDNumber,	[ @DisplayName, @OwnBy ] ]
