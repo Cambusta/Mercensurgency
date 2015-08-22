@@ -68,7 +68,7 @@ player setVariable ["market_CashSyncTimer",time + 300];
 			};
 		};
 		
-		if(time > player getVariable "market_CashSyncTimer") then {
+		if (time > player getVariable "market_CashSyncTimer") then {
 			player setVariable ["market_CashSyncTimer",time + 300];
 			
 	                [_squadLogic getVariable (name player), "cash", dzn_market_accountCash] call dzn_fnc_setValueByKey;
