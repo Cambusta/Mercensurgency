@@ -8,7 +8,7 @@ if (isNil "missionParametersSet") then {
 	[par_daytime, par_month, par_year] call dzn_fnc_setDateTime;
 	
   	// Respawn Time
-  	setPlayerRespawnTime = par_respawnTime;
+  	setPlayerRespawnTime par_respawnTime;
   	
 	[] spawn {
 		waitUntil {!isNil "aoiInitialized"};
