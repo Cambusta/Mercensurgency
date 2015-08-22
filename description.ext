@@ -1,3 +1,6 @@
+#include "defines.hpp"
+#include "dialogs.hpp"
+
 class Header {
 	gameType = Coop;
 	minPlayers = 1;
