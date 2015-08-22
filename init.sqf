@@ -1,7 +1,7 @@
 enableSaving [false, false];
 enableSentences false;
 
-#include "defines.sqf";
+#include "mission_defines.sqf";
 #include "commonFunctions.sqf";
 
 // dzn_gear
