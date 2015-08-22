@@ -1,4 +1,4 @@
-#define DEBUG	true
+#define DEBUG	false
 
 fnc_s_taskGen_getSquadsWithoutTask = {
 	// @ListOfSquads = @SquadLogics call fnc_s_taskGen_getSquadsWithoutTask
