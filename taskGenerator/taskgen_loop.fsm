@@ -1,0 +1,120 @@
+/*%FSM<COMPILE "D:\GMZ\BI Toolz\FSM Editor Personal Edition\scriptedFSM.cfg, taskGen_loop">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-50.000000,-1175.000000,50.000000,-1125.000000,0.000000,"Start"};
+item1[] = {"true",4,218,-50.000000,-1100.000000,50.000000,-1050.000000,0.000000,"true"};
+item2[] = {"Check_Squads_for",2,250,-50.000000,-975.000000,50.000000,-925.000000,0.000000,"Check Squads" \n "for Active task"};
+item3[] = {"No_active_tasks",4,218,-50.000000,-900.000000,50.000000,-850.000000,0.000000,"No active tasks?"};
+item4[] = {"Generate_task",2,250,-50.000000,-825.000000,50.000000,-775.000000,0.000000,"Generate task"};
+item5[] = {"timer",4,218,100.000000,-975.000000,200.000000,-925.000000,0.000000,"timer"};
+item6[] = {"",7,210,146.000000,-804.000000,154.000015,-796.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {3,4};
+link5[] = {4,6};
+link6[] = {5,2};
+link7[] = {6,5};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,263,6316128,1,-275.307831,293.024261,-808.437317,-1341.879761,619,581,1};
+window[] = {0,-1,-1,-1,-1,901,175,1271,175,1,637};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "taskGen_loop";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"private[""_timer"",""_debug"",""_squads""];" \n
+       "" \n
+       "_debug = false;" \n
+       "_timer = time + taskgen_checkTimer;" \n
+       "" \n
+       "if (_debug) then { player sideChat ""TaskGen Init""; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="Check_Squads_for";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_Squads_for">*/
+    class Check_Squads_for
+    {
+      name = "Check_Squads_for";
+      init = /*%FSM<STATEINIT""">*/"_squads = squadLogics call fnc_s_taskGen_getSquadsWithoutTask;" \n
+       "" \n
+       "_timer = time + taskgen_checkTimer/3;" \n
+       "" \n
+       "if (_debug) then { player sideChat format [""Checked for Squads: %1"", str[_squads]]; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "timer">*/
+        class timer
+        {
+          priority = 0.000000;
+          to="Check_Squads_for";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "No_active_tasks">*/
+        class No_active_tasks
+        {
+          priority = 0.000000;
+          to="Generate_task";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer && { !(_squads isEqualTo []) }"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Generate_task">*/
+    class Generate_task
+    {
+      name = "Generate_task";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "	_x spawn fnc_s_taskGen_generateTask;" \n
+       "	if (_debug) then { player sideChat format [""Generate task for %1"", _x]; }" \n
+       "} forEach _squads;" \n
+       "" \n
+       "_timer = time + taskgen_checkTimer;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "timer">*/
+        class timer
+        {
+          priority = 0.000000;
+          to="Check_Squads_for";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+  };
+};
+/*%FSM</COMPILE>*/
