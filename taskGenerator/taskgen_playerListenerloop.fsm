@@ -1,0 +1,128 @@
+/*%FSM<COMPILE "D:\GMZ\BI Toolz\FSM Editor Personal Edition\scriptedFSM.cfg, taskGen_playerListenerLoop">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-50.000000,-1175.000000,50.000000,-1125.000000,0.000000,"Start"};
+item1[] = {"true",4,218,-50.000000,-1100.000000,50.000000,-1050.000000,0.000000,"true"};
+item2[] = {"Check_player__for",2,250,-50.000000,-975.000000,50.000000,-925.000000,0.000000,"Check player " \n "for not initialized " \n "tasks"};
+item3[] = {"Not_initialized",4,218,-50.000000,-900.000000,50.000000,-850.000000,1.000000,"Not initialized"};
+item4[] = {"Initialize_task",2,4346,-50.000000,-825.000000,50.000000,-775.000000,0.000000,"Initialize task" \n "on player"};
+item5[] = {"timer",4,218,100.000000,-975.000000,200.000000,-925.000000,0.000000,"timer"};
+item6[] = {"",7,210,146.000000,-804.000000,154.000015,-796.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {3,4};
+link5[] = {4,6};
+link6[] = {5,2};
+link7[] = {6,5};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,263,6316128,1,-191.317520,216.866165,-678.338440,-1192.024414,644,706,1};
+window[] = {0,-1,-1,-1,-1,876,25,1163,25,1,662};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "taskGen_playerListenerLoop";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"private[""_timer"",""_debug"",""_squad"",""_task"",""_playerTaskAOI""];" \n
+       "_debug = false;" \n
+       "" \n
+       "_squad = player getVariable ""squadLogic"";" \n
+       "_timer = time + taskgen_playerCheckTimer;" \n
+       "" \n
+       "if (_debug) then { player sideChat ""TaskGen Player Listnter Init""; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="Check_player__for";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_player__for">*/
+    class Check_player__for
+    {
+      name = "Check_player__for";
+      init = /*%FSM<STATEINIT""">*/"_isNewTask =!( player getVariable ""taskInitialized"");" \n
+       "_timer = time + taskgen_playerCheckTimer;" \n
+       "" \n
+       "if (_debug) then { player sideChat format [" \n
+       "	""TaskGen Player Listnter: is new task - %1""," \n
+       "	_isNewTask" \n
+       "]; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Not_initialized">*/
+        class Not_initialized
+        {
+          priority = 1.000000;
+          to="Initialize_task";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer && { _isNewTask }"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "timer">*/
+        class timer
+        {
+          priority = 0.000000;
+          to="Check_player__for";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Initialize_task">*/
+    class Initialize_task
+    {
+      name = "Initialize_task";
+      init = /*%FSM<STATEINIT""">*/"_task = _squad getVariable ""task"" select 0;" \n
+       "_playerTaskAOI = _squad getVariable ""task"" select 1;" \n
+       "" \n
+       "call compile format [" \n
+       "	""[_squad, _playerTaskAOI] execVM 'taskGenerator\tasks\%1.sqf'""," \n
+       "	_task" \n
+       "];" \n
+       "" \n
+       "player setVariable [""taskInitialized"", true, true];" \n
+       "" \n
+       "_timer = time + taskgen_playerCheckTimer;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "timer">*/
+        class timer
+        {
+          priority = 0.000000;
+          to="Check_player__for";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+  };
+};
+/*%FSM</COMPILE>*/
