@@ -12,6 +12,8 @@
 //         KITS 
 // =====================
 
+kit_playerDefault = EMPTYKIT;
+
 // Allies
 #define R_UNIFORM	["U_I_CombatUniform","U_I_CombatUniform_shortsleeve"]
 #define R_HELMET	["H_HelmetIA","H_HelmetIA_camo","H_HelmetIA_net"]
