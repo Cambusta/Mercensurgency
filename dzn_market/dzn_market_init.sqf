@@ -5,8 +5,7 @@ waitUntil { !isNil "squadInitialized" };
 if( !isNil {player getVariable "squadLogic"} ) then {
 	_squadLogic = player getVariable "squadLogic";
 	dzn_market_accountCash = [_squadLogic getVariable (name player), "cash"] call dzn_fnc_getValueByKey;
-}
-else { 
+} else { 
 	dzn_market_accountCash = par_startCash;
 };
 
@@ -18,20 +17,12 @@ dzn_market_sellCoefficient = _this select 0;
 // Include functions
 #include "dzn_market_functions.sqf"
 
+// Exit for server
+if !(hasInterface && !(isNull player)) exitWith {};
 
-
-
-[
-	marketBox, 
-	["FirstAidKit"], 
-	true,
-	true
-] call BIS_fnc_addVirtualItemCargo;
-
+[marketBox, ["FirstAidKit"], true,true] call BIS_fnc_addVirtualItemCargo;
 [marketBox, dzn_market_itemList] call dzn_fnc_market_updateMarketBox;
 
-	
-	
 waitUntil {!isNil "dzn_fnc_gear_getGear" && !isNil "dzn_fnc_gear_assignGear"};
 player setVariable ["ArsenalOpened",false];
 player setVariable ["ArsenalTimer",time + 1];
@@ -71,12 +62,12 @@ player setVariable ["market_CashSyncTimer",time + 300];
 		if (time > player getVariable "market_CashSyncTimer") then {
 			player setVariable ["market_CashSyncTimer",time + 300];
 			
-	                [_squadLogic getVariable (name player), "cash", dzn_market_accountCash] call dzn_fnc_setValueByKey;
-	                (player getVariable "squadLogic") setVariable [
-	                        name player,
-	                        (player getVariable "squadLogic")  getVariable (name player),
-	                        true
-	                ];
+			[(player getVariable "squadLogic") getVariable (name player), "cash", dzn_market_accountCash] call dzn_fnc_setValueByKey;
+			(player getVariable "squadLogic") setVariable [
+				name player
+				,(player getVariable "squadLogic")  getVariable (name player)
+				,true
+			];
 		};
 		
 	}] call BIS_fnc_addStackedEventHandler;
