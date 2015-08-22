@@ -67,17 +67,17 @@ player setVariable ["market_CashSyncTimer",time + 300];
 				};				
 			};
 		};
-	
-	if(time > player getVariable "market_CashSyncTimer") then {
-		player setVariable ["market_CashSyncTimer",time + 300];
 		
-                [_squadLogic getVariable (name player), "cash", dzn_market_accountCash] call dzn_fnc_setValueByKey;
-                (player getVariable "squadLogic") setVariable [
-                        name player,
-                        (player getVariable "squadLogic")  getVariable (name player),
-                        true
-                ];
-	};
-	
+		if(time > player getVariable "market_CashSyncTimer") then {
+			player setVariable ["market_CashSyncTimer",time + 300];
+			
+	                [_squadLogic getVariable (name player), "cash", dzn_market_accountCash] call dzn_fnc_setValueByKey;
+	                (player getVariable "squadLogic") setVariable [
+	                        name player,
+	                        (player getVariable "squadLogic")  getVariable (name player),
+	                        true
+	                ];
+		};
+		
 	}] call BIS_fnc_addStackedEventHandler;
 };
