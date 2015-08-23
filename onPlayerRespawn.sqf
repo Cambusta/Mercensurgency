@@ -1,7 +1,7 @@
 if (player distance (getMarkerPos "respawn_west") < 5) then {
 	if (par_respawnCost > 0) then {
 		hint parseText format [
-			"<t size='1.25' color='#CC3300'>MEDICAL INSURANCE</t><br/>Issued in the name %1.<br/><br/>Cost $ %2.", 
+			"<t size='1.25' color='#CC3300'>MEDICAL INSURANCE</t><br/>Issued in the name %1.<br/><br/>Cost $ %2."
 			,name(player)
 			,par_respawnCost 
 		]; 
