@@ -13,15 +13,7 @@ call dzn_fnc_getMissionParametes;
 // Get mission parameters
 missionParametersSet = true;
 
-
-// =======================
-// Initialize AOIs
-// =======================
-waitUntil { !isNil "fnc_s_initializeAOIs" };
-[] spawn fnc_s_initializeAOIs;
-
-
 // =======================
 // Initialize Purgatory
 // =======================
-[] execVM "purgatory/purgatory_init.sqf";
+[] execVM "purgatory\purgatory_init.sqf";
