@@ -15,7 +15,7 @@ if (player distance (getMarkerPos "respawn_west") < 5) then {
 	// Here some RAMBO-proof stuff called
 	
 	[player, "kit_playerDefault", false] spawn dzn_fnc_gear_assignKit;
-	player setPosASL (getPosASL merc_mainBase);
+	player setPosA (getPos purgatory_spawnPos);
 } else {
 	[player, revive_deathKit] call dzn_fnc_gear_setSimpleKit;
 };
