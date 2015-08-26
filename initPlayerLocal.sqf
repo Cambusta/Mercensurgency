@@ -14,4 +14,12 @@ if (isNil "missionParametersSet") then {
 		waitUntil {!isNil "aoiInitialized"};
 		[] spawn fnc_drawGarrisonMarkers;
 	};
+	
+	player addEventHandler ["Killed", {
+		(_this select 0) setVariable [
+			"deathKit"
+			, player call dzn_fnc_gear_getSimpleKit
+			,false
+		];
+	}];
 };
