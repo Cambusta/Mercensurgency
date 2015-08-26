@@ -16,6 +16,6 @@ if (player distance (getMarkerPos "respawn_west") < 5) then {
 	
 	[player, "kit_playerDefault", false] spawn dzn_fnc_gear_assignKit;
 	player setPosASL (getPosASL merc_mainBase);
-	
-	
+} else {
+	[player, revive_deathKit] call dzn_fnc_gear_setSimpleKit;
 };
