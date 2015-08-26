@@ -32,7 +32,6 @@ for "_i" from 0 to _length do {
 			};
 		};
 		
-		//if (_i in [0, 31]) then {
 		if (_i in [0, _length]) then {
 			for "_k" from 0 to 2 do {
 				_o  = createVehicle [_b, _basicPos, [], 0, "NONE"];
@@ -48,12 +47,14 @@ for "_i" from 0 to _length do {
 		};
 		
 		/*
+		// Popup Targets
 		if (_i in [10, 15, 20, 25, 30] && _j in [1,2,3,4]) then {
 			_to = createVehicle ["TargetP_Inf_F", _basicPos, [], 0, "NONE"];
 			_to attachTo [_basicObject, [12 * _i, 12 * _j, 3]];
 			_to setDir 90;			
 		};
 		
+		// Bunkers
 		if (_i == 6 && _j in [1,4]) then {
 			_o = createVehicle ["Land_HBarrierTower_F", _basicPos, [], 0, "NONE"];
 			_o attachTo [_basicObject, [12 * _i, 12 * _j, 4]];
