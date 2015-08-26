@@ -1,3 +1,5 @@
+if (!isNil "missionParametersSet") exitWith {};
+
 #include "serverFunctions.sqf";
 
 waitUntil {!isNil "dzn_fnc_getMissionParametes"};
