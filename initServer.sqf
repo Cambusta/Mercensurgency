@@ -17,3 +17,9 @@ missionParametersSet = true;
 // =======================
 waitUntil { !isNil "fnc_s_initializeAOIs" };
 [] spawn fnc_s_initializeAOIs;
+
+
+// =======================
+// Initialize Purgatory
+// =======================
+[] execVM "purgatory/purgatory_init.sqf";
