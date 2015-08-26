@@ -1,6 +1,8 @@
 private["_b","_basicPos","_basicObject","_o","_to","_i","_j","_k"];
 
 purgatory_spawnPos = [1735, 5622, 56];
+publicVariable "purgatory_spawnPos";
+
 
 _b = "Land_VR_Block_02_F";
 _basicPos = [1697, 5598, 50];
