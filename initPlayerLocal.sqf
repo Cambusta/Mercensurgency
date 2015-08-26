@@ -16,8 +16,11 @@ if (isNil "missionParametersSet") then {
 	};
 	
 	// Kit at death moment
+	/*
 	revive_deathKit = [];
-	player addEventHandler ["Killed", {
+	player addEventHandler ["MPKilled", {
+		player sideChat "KILLED EH";
 		revive_deathKit = (_this select 0) call dzn_fnc_gear_getSimpleKit;
 	}];
+	*/
 };
