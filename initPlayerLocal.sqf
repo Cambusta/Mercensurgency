@@ -15,11 +15,9 @@ if (isNil "missionParametersSet") then {
 		[] spawn fnc_drawGarrisonMarkers;
 	};
 	
+	// Kit at death moment
+	revive_deathKit = [];
 	player addEventHandler ["Killed", {
-		(_this select 0) setVariable [
-			"deathKit"
-			, player call dzn_fnc_gear_getSimpleKit
-			,false
-		];
+		revive_deathKit = player call dzn_fnc_gear_getSimpleKit;
 	}];
 };
