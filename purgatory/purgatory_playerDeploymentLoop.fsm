@@ -1,0 +1,205 @@
+/*%FSM<COMPILE "D:\GMZ\BI Toolz\FSM Editor Personal Edition\scriptedFSM.cfg, purgatory_playerDeploymentLoop">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,0.000000,-1000.000000,100.000000,-950.000000,0.000000,"Start"};
+item1[] = {"true",4,218,0.000000,-925.000000,100.000000,-875.000000,0.000000,"true"};
+item2[] = {"Deployed",4,218,-225.000000,-850.000000,-125.000000,-800.000000,4.000000,"Deployed"};
+item3[] = {"End",1,250,-225.000000,-750.000000,-125.000000,-700.000000,0.000000,"End"};
+item4[] = {"In_Purgatory",2,250,0.000000,-850.000000,100.000000,-800.000000,0.000000,"In Purgatory"};
+item5[] = {"Deployment_Avail",4,218,75.000000,-775.000000,175.000000,-725.000000,2.000000,"Deployment" \n "Availbale"};
+item6[] = {"Short_loop",4,218,0.000000,-625.000000,100.000000,-575.000000,0.000000,"Short loop"};
+item7[] = {"Set_Deploy__acti",2,4346,75.000000,-700.000000,175.000000,-650.000000,0.000000,"Set Deploy " \n "actions"};
+item8[] = {"Deploy__Not_Avai",4,218,-75.000000,-775.000000,25.000000,-725.000000,2.000000,"Deploy " \n "Not Available"};
+item9[] = {"Remove_Deploy__a",2,250,-75.000000,-700.000000,25.000000,-650.000000,0.000000,"Remove Deploy " \n "actions"};
+link0[] = {0,1};
+link1[] = {1,4};
+link2[] = {2,3};
+link3[] = {4,2};
+link4[] = {4,5};
+link5[] = {4,6};
+link6[] = {4,8};
+link7[] = {5,7};
+link8[] = {6,4};
+link9[] = {7,6};
+link10[] = {8,9};
+link11[] = {9,6};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,278,6316128,1,-253.216110,292.536987,-497.260254,-1009.509583,619,581,1};
+window[] = {0,-1,-1,-32000,-32000,776,50,1146,50,1,637};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "purgatory_playerDeploymentLoop";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"private[""_timer"",""_timerLong"", ""_debug"",""_squads""];" \n
+       "" \n
+       "_debug = false;" \n
+       "_timerLong = time;" \n
+       "_timer = time + purgatory_checkTimer;" \n
+       "" \n
+       "if (_debug) then { player sideChat ""Purgatory  Init""; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="In_Purgatory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/"player removeAction (player getVariable ""purgatory_actionDeploy"");" \n
+       "" \n
+       "player setVariable [""purgatory_deployed"", nil, false];" \n
+       "player setVariable [""purgatory_actionDeploy"", nil, false];" \n
+       "" \n
+       "call fnc_c_purgatory_hidePurgatorySpawnIndicator;" \n
+       "" \n
+       "if (_debug) then { player sideChat ""Purgatory: DEPLOYED""; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "In_Purgatory">*/
+    class In_Purgatory
+    {
+      name = "In_Purgatory";
+      init = /*%FSM<STATEINIT""">*/"call fnc_c_purgatory_showPurgatorySpawnIndicator;" \n
+       "" \n
+       "if (isNil { player getVariable ""purgatory_deployed""} ) then {" \n
+       "	player setVariable [""purgatory_deployed"", false];" \n
+       "};" \n
+       "" \n
+       "_timer = time + purgatory_checkTimer;" \n
+       "" \n
+       "if (_debug) then { player sideChat ""Purgatory: Start loop""; }"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Deployed">*/
+        class Deployed
+        {
+          priority = 4.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(player getVariable ""purgatory_deployed"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Deploy__Not_Avai">*/
+        class Deploy__Not_Avai
+        {
+          priority = 2.000000;
+          to="Remove_Deploy__a";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer && { !(player call fnc_c_purgatory_isSpawnAvailable) }"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Deployment_Avail">*/
+        class Deployment_Avail
+        {
+          priority = 2.000000;
+          to="Set_Deploy__acti";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer && { player call fnc_c_purgatory_isSpawnAvailable }"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Short_loop">*/
+        class Short_loop
+        {
+          priority = 0.000000;
+          to="In_Purgatory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Set_Deploy__acti">*/
+    class Set_Deploy__acti
+    {
+      name = "Set_Deploy__acti";
+      init = /*%FSM<STATEINIT""">*/"if (isNil {player getVariable ""purgatory_actionDeploy""}) then {" \n
+       "	player setVariable [" \n
+       "		""purgatory_actionDeploy""" \n
+       "		, player addAction [" \n
+       "			purgatory_actionText" \n
+       "			,{" \n
+       "				player setVariable [""purgatory_deployed"", true];" \n
+       "				player spawn fnc_c_purgatory_deployUnit; " \n
+       "			}" \n
+       "		]" \n
+       "		, false" \n
+       "	];" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if (_debug) then { player sideChat ""Purgatory: Deploy action added""; }" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Short_loop">*/
+        class Short_loop
+        {
+          priority = 0.000000;
+          to="In_Purgatory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Remove_Deploy__a">*/
+    class Remove_Deploy__a
+    {
+      name = "Remove_Deploy__a";
+      init = /*%FSM<STATEINIT""">*/"if !(isNil {player getVariable ""purgatory_actionDeploy""}) then {" \n
+       "	player setVariable [""purgatory_actionDeploy"", nil];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Short_loop">*/
+        class Short_loop
+        {
+          priority = 0.000000;
+          to="In_Purgatory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/
