@@ -21,3 +21,6 @@ enableSentences false;
 
 // Market
 [0.3] execVM "dzn_market\dzn_market_init.sqf";
+
+// Purgatory
+[] execVM "purgatory\purgatory_init.sqf";
