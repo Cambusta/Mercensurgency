@@ -46,7 +46,7 @@ class Params
 	class par_taskPurchaseMultiplayer	
 	{
 		title = "  Cash multiplier for task completion";
-		values[] = {0.5,1,1.25,1.5,2,3,5};
+		values[] = {50,100,125,150,200,300,500};
 		texts[] = {
 			"x0.5",
 			"x1",
@@ -56,8 +56,23 @@ class Params
 			"x3",
 			"x5"
 		};
-		default = 1;		
+		default = 100;		
 	};
+
+	class par_marketSaleMultiplier
+	{
+		title = "  Market sale multiplier";
+		values[] = {7, 5, 4, 3, 2, 1};
+		texts[] = {
+			"x0.7",
+			"x0.5",
+			"x0.4",
+			"x0.3",
+			"x0.2",
+			"None"
+		};
+		default = 5;
+	}
 	
 	// Respawn Settings
 	class paramEmptyDelimiter1 
