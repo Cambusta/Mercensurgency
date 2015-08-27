@@ -119,3 +119,15 @@ dzn_fnc_setDateTime = {
 
 	setDate [_year, _month, _day, _time, 0];
 };
+
+dzn_fnc_isInArea2d = {
+	// @Boolean = [ @Object or @Pos3d to check, @Pos3d, @Distance ] call dzn_fnc_isInArea2d;
+	private["_cPos"];
+	_cPos = if (typename (_this select 0) == "ARRAY") then { _this select 0 } else { getPosASL (_this select 0) };
+	
+	if (_cPos distance2D (_this select 1) <= _this select 2) then {
+		true
+	} else {
+		false
+	};	
+};
