@@ -19,10 +19,10 @@ enableDebugConsole = 2;
 respawn = 3;
 respawnDelay = 10;    // Should be specified after mission init with setPlayerRespawnTime (local)
 respawnOnStart = -1;  //Dont respawn on start. Don't run respawn script on start.
-respawnTemplates[] = {"Counter","Revive","Wave"}; // Wave doesn't work =(
+respawnTemplates[] = {"Counter","Revive"}; // Wave doesn't work =(
 
 reviveDelay = 10;		// 10 second to Revie another player. MedKit will half.
-reviveForceRespawnDelay = 25;	// 25 second to hold space to respawn. Anyway u can do it with Menu - Respawn
+reviveForceRespawnDelay = 5;	// 12 second to hold space to respawn. Anyway u can do it with Menu - Respawn
 reviveBleedOutDelay = 600;	// 10 minutes of bleedout
 
 // ==============
@@ -244,3 +244,49 @@ class Params
 };
 
 // ======== END OF MISSION PARAMETERS =============
+
+
+// ======== CUSTOM DISPLAYS =============
+class RscTitles
+{
+	class purgatorySpawnTitle
+	{
+		idd = -1;
+		duration = 9000;
+		onLoad = "_this spawn fnc_c_purgatory_onPurgatoryTitleLoad"; 
+		class controls
+		{
+			class purgatoryTextControl
+			{    
+				idc = 1012;				
+				type = 0;				
+				style = 2;
+				x = 0.175; 	
+				y = 0;
+				w = 0.174999;		
+				h = 0.04;
+				font = "puristaMedium";
+				sizeEx = 0.035;
+				colorBackground[] = {0.3,0.6,0,1};
+				colorText[] = {1,1,1,0.8};
+				text = "Deployment";
+			}; 
+			
+			class purgatorySpawnControl
+			{    
+				idc = 1013;				
+				type = 0;				
+				style = 2;
+				x = 0.175; 	
+				y = 0.04;
+				w = 0.174999;		
+				h = 0.04;
+				font = "puristaMedium";
+				sizeEx = 0.035;
+				colorBackground[] = {0,0,0,.4};
+				colorText[] = {1,1,1,0.8};
+				text = "AVAILABLE";
+			};
+		};
+	};
+};
