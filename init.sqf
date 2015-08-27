@@ -22,6 +22,8 @@ enableSentences false;
 [] execVM "taskGenerator\taskgen_init.sqf";
 
 // Market
-waitUntil {time > 2};  //par_marketSaleMultiplier returns Undefined Variable Exception upon mission start
-_multiplierCoeff = [marketSaleMultiplierMapping, par_marketSaleMultiplier] call dzn_fnc_getValueByKey;
-[_multiplierCoeff] execVM "dzn_market\dzn_market_init.sqf";
+waitUntil {!isNull "par_marketSaleMultiplier"};  //par_marketSaleMultiplier returns Undefined Variable Exception upon mission start
+_multiplierCoeff =
+[
+   [marketSaleMultiplierMapping, par_marketSaleMultiplier] call dzn_fnc_getValueByKey
+] execVM "dzn_market\dzn_market_init.sqf";
