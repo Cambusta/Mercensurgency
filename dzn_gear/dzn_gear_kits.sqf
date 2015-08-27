@@ -2,6 +2,8 @@
 
 // ******** USEFUL MACROSES *******
 #define EMPTYKIT	[["","","","",""],["","","","",""],["","","","",""],["","","","",""],[],[["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0]],[["",0],["",0],["",0],["",0],["",0],["",0]],[]]
+#define EMPTYKIT_RADIO	[["","","","",""],["","","","",""],["","","","",""],["","","","",""],["ItemRadio"],[["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0]],[["",0],["",0],["",0],["",0],["",0],["",0]],[]]
+
 #define EMPTYWEAPON	["","","",""]
 // Macros for the list of items to be chosen randomly
 #define RANDOM_ITEM	["H_HelmetB_grass","H_HelmetB"]
@@ -12,7 +14,7 @@
 //         KITS 
 // =====================
 
-kit_playerDefault = EMPTYKIT;
+kit_playerDefault = [[ ["U_BG_Guerilla2_1","U_BG_Guerilla2_2","U_BG_Guerilla2_3"],"","","",""],["","","","",""],["","","","",""],["","","","",""],["ItemWatch","ItemRadio"],[["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0]],[["",0],["",0],["",0],["",0],["",0],["",0]],[]];
 
 // Allies
 #define R_UNIFORM	["U_I_CombatUniform","U_I_CombatUniform_shortsleeve"]
