@@ -6,5 +6,4 @@ if (player distance (getMarkerPos "respawn_west") < 5) then {
 	player spawn fnc_c_purgatory_moveToPurgatory;
 } else {
 	// Revived
-	//[player, revive_deathKit] call dzn_fnc_gear_setSimpleKit;
 };
