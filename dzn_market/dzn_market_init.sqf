@@ -1,5 +1,5 @@
 // Properties
-private["_squadLogic"];
+private["_squadLogic", "_marketBox"];
 waitUntil { !isNil "squadInitialized" };
 
 if( !isNil {player getVariable "squadLogic"} ) then {
@@ -11,6 +11,15 @@ if( !isNil {player getVariable "squadLogic"} ) then {
 
 dzn_market_sellCoefficient = _this select 0;
 
+{
+	if(_x isKindOf "ReammoBox_F") then {
+		_marketBox = _x;
+	};
+} foreach (synchronizedObjects equipMarket);
+
+if(isNil "_marketBox") then
+{ hint "Error in dzn_market: no ammobox that was inherited from ""ReammoBox_F"" is linked to ""equipMarket"" module. Please link suitable ammobox."; };
+
 // Include functions
 #include "dzn_market_inventory.sqf"
 
@@ -20,8 +29,8 @@ dzn_market_sellCoefficient = _this select 0;
 // Exit for server
 if !(hasInterface && !(isNull player)) exitWith {};
 
-[marketBox, ["FirstAidKit"], true,true] call BIS_fnc_addVirtualItemCargo;
-[marketBox, dzn_market_itemList] call dzn_fnc_market_updateMarketBox;
+[_marketBox, ["FirstAidKit"], true,true] call BIS_fnc_addVirtualItemCargo;
+[_marketBox, dzn_market_itemList] call dzn_fnc_market_updateMarketBox;
 
 waitUntil {!isNil "dzn_fnc_gear_getGear" && !isNil "dzn_fnc_gear_assignGear"};
 player setVariable ["ArsenalOpened",false];
