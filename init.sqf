@@ -1,3 +1,5 @@
+private["_multiplierCoeff"];
+
 enableSaving [false, false];
 enableSentences false;
 
@@ -20,4 +22,5 @@ enableSentences false;
 [] execVM "taskGenerator\taskgen_init.sqf";
 
 // Market
-[0.3] execVM "dzn_market\dzn_market_init.sqf";
+_multiplierCoeff = [marketSaleMultiplierMapping, par_marketSaleMultiplier] call dzn_fnc_getValueByKey;
+[_multiplierCoeff] execVM "dzn_market\dzn_market_init.sqf";
