@@ -23,7 +23,6 @@ enableSentences false;
 
 // Market
 waitUntil {!isNull "par_marketSaleMultiplier"};  //par_marketSaleMultiplier returns Undefined Variable Exception upon mission start
-_multiplierCoeff =
 [
    [marketSaleMultiplierMapping, par_marketSaleMultiplier] call dzn_fnc_getValueByKey
 ] execVM "dzn_market\dzn_market_init.sqf";
