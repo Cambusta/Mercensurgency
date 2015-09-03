@@ -322,19 +322,21 @@ dzn_fnc_assignInBuilding = {
 	/*
 		Search for building wither inner positions in location and move unit to position inside. 
 		If no building with inner positons were found - don't move unit to any building (if no building near - do nothing).
-		EXAMPLE: [_unit, _zoneBuildings, (Optional)_filter] spawn dzn_fnc_createPathFromRandom;
+		EXAMPLE: [_unit, _zoneBuildings, (Optional)_filter, _isObject] spawn dzn_fnc_assignInBuilding;
 		INPUT:
 			0: UNIT				- Unit which will get position in building
 			1: ARRAY			- List of zone's buildings
-			2: ARRAY (Optional)	- List of classnames to find 
+			2: ARRAY (Optional)	- List of classnames to find
+			3: BOOLEAN			- Is unit an object or unit (will create WP for unit)
 		OUTPUT: NULL
 	*/
 	
-	private ["_unit","_zoneBuildings","_filteredBuildings","_found","_house","_housePosId","_objectId","_wp","_max"];
+	private ["_unit","_zoneBuildings","_isObject","_filteredBuildings","_found","_house","_housePosId","_objectId","_wp","_max"];
 	
 	_unit = _this select 0;
 	_zoneBuildings = _this select 1;	
-
+	_isObject = if !(isNil {_this select 2}) then { _this select 2 } else { false };
+	
 	// If filter passed - get filtered list
 	if (!isNil {_this select 2}) then {
 	
@@ -361,16 +363,17 @@ dzn_fnc_assignInBuilding = {
 			_housePosId = (_house getVariable "housePositions") call BIS_fnc_selectRandom;
 			_house setVariable ["housePositions", ((_house getVariable "housePositions") - [_housePosId])];
 			_unit setPos (_house buildingPos _housePosId);
-			
-			_objectId = parseNumber (([([str(_house), " "] call BIS_fnc_splitString) select 1, ":"] call BIS_fnc_splitString) select 0);
-			
-			_wp = (group _unit) addWaypoint [getPosATL _unit, 0];
-			_wp waypointAttachObject _objectId;
-			_wp setWaypointHousePosition _housePosId;
-			(group _unit) addWaypoint [getPosATL _unit, 0];
-			_wp setWaypointType "CYCLE";
-	
-			(group _unit) setVariable ["wpSet", true];			
+			if !(_isObject) then {
+				_objectId = parseNumber (([([str(_house), " "] call BIS_fnc_splitString) select 1, ":"] call BIS_fnc_splitString) select 0);
+				
+				_wp = (group _unit) addWaypoint [getPosATL _unit, 0];
+				_wp waypointAttachObject _objectId;
+				_wp setWaypointHousePosition _housePosId;
+				(group _unit) addWaypoint [getPosATL _unit, 0];
+				_wp setWaypointType "CYCLE";
+		
+				(group _unit) setVariable ["wpSet", true];
+			};
 			_found = true;
 		};
 		sleep .1;
